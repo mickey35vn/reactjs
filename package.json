@@ -1,0 +1,22 @@
+{
+  "name": "practive2",
+  "version": "1.0.0",
+  "description": "Company training",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mickey35vn@github.com/mickey35vn/reactjs.git"
+  },
+  "author": "tramnguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mickey35vn/reactjs/issues"
+  },
+  "homepage": "https://github.com/mickey35vn/reactjs#readme",
+  "dependencies": {
+    "webpack": "^2.2.1"
+  }
+}
