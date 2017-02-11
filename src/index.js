@@ -5,12 +5,12 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './main/app';
 import NewTask from './containers/NewTask';
 import Task from './containers/Task';
-import Navigation from './main/Navigation';
+import TaskList from './main/TaskList';
 
 render((
 	<Router history={browserHistory}>
 		<Route path='/' component={App}>
-			<IndexRoute component={Navigation} />
+			<IndexRoute component={TaskList} />
 			<Route path='task/new' component={NewTask} />
 			<Route path='task/:id' component={Task} />
 		</Route>

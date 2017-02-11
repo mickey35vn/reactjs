@@ -1,11 +1,11 @@
-import json from 'json-loader!../tasks.json';
+import json from '../tasks.json';
 
 let _tasks = [];
 let _initCalled = false;
 let _changeListeners = [];
 
 const TaskManager = {
-	init: function () {
+	init: () => {
 		if (_initCalled) {
 			return;
 		}
@@ -15,7 +15,7 @@ const TaskManager = {
 		TaskManager.notifyChange();
 	},
 
-	addTask: function (task, cb) {
+	addTask: (task, cb) => {
 		_tasks.push(task);
 
 		TaskManager.notifyChange();
@@ -25,35 +25,39 @@ const TaskManager = {
 		}
 	},
 
-	removeTask: function (id, cb) {
+	removeTask: (id, cb) => {
 		delete _tasks[id];
 
 		TaskManager.notifyChange();
+
+		if (cb) {
+			cb();
+		}
 	},
 
-	getTasks: function () {
+	getTasks: () => {
 		return _tasks;
 	},
 
-	getTask: function (id) {
+	getTask: (id) => {
 		return _tasks[id];
 	},
 
-	notifyChange: function () {
-		_changeListeners.forEach(function (listener) {
+	notifyChange: () => {
+		_changeListeners.forEach((listener) => {
 			listener();
 		});
 	},
 
-	addChangeListener: function (listener) {
+	addChangeListener: (listener) => {
 		_changeListeners.push(listener);
 	},
 
-	removeChangeListener: function (listener) {
-		_changeListeners = _changeListeners.filter(function (l) {
+	removeChangeListener: (listener) => {
+		_changeListeners = _changeListeners.filter((l) => {
 			return listener !== l;
 		});
 	}
-}
+};
 
 export default TaskManager;
