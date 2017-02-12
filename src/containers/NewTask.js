@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import TaskManager from '../managers/TashManager';
 
@@ -34,8 +35,12 @@ class NewTask extends React.Component {
 	render() {
 		return (<div>
 			<h1>New Task</h1>
-			<input type='text' value={this.state.task} onChange={this.updateState} onKeyPress={this.handleKeyPress} />
-			<button onClick={this.addTask}>ADD</button>
+			<form onSubmit={this.addTask}>
+				<input type='text' value={this.state.task} onChange={this.updateState} onKeyPress={this.handleKeyPress} />
+				<div>
+					<button type='submit'>Save</button> <Link to='/'><button>Cancel</button></Link>
+				</div>
+			</form>
 		</div>);
 	}
 }
