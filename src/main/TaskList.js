@@ -33,6 +33,7 @@ class TaskList extends React.Component {
 		const tasks = this.state.tasks.map((task, id) => <li key={id}><Link to={`/task/${id}`}>{task.name}</Link></li>);
 
 		return (<div>
+			<Link to='/task/new'>New Task</Link>
 			<ul>
 				{tasks}
 			</ul>

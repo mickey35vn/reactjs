@@ -15,7 +15,9 @@ const TaskManager = {
 		TaskManager.notifyChange();
 	},
 
-	addTask: (task, cb) => {
+	addTask: (taskName, cb) => {
+		const task = { name: taskName, completed: false };
+
 		_tasks.push(task);
 
 		TaskManager.notifyChange();
