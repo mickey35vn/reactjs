@@ -45,7 +45,7 @@ class NewTask extends React.Component {
 			<div>
 				<input type='text' value={this.state.task} onChange={this.updateState} onKeyPress={this.handleKeyPress} />
 				<div>
-					<button onClick={this.addTask}>Save</button>
+					<button disabled={!this.state.task} onClick={this.addTask}>Save</button>
 					<button onClick={this.handleCancelPress}>Cancel</button>
 				</div>
 			</div>
