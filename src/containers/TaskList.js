@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import TaskManager from '../managers/TashManager';
+import TaskItem from '../components/TaskItem';
 
 class TaskList extends React.Component {
 	constructor(props) {
@@ -30,7 +31,7 @@ class TaskList extends React.Component {
 	}
 
 	render() {
-		const tasks = this.state.tasks.map((task, id) => <li key={id}><Link to={`/task/${id}`}>{task.name}</Link></li>);
+		const tasks = this.state.tasks.map((task, id) => <TaskItem task={task} id={id + 1} key={id} />);
 
 		return (<div>
 			<Link to='/task/new'>New Task</Link>
