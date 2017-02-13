@@ -1,18 +1,18 @@
 import React from 'react';
 
 import TaskManager from '../managers/TashManager';
+import { confirm } from '../util/confirm';
 
 class NewTask extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { task: '', showConfirm: false };
+		this.state = { task: '' };
 
 		this.updateState = this.updateState.bind(this);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 		this.addTask = this.addTask.bind(this);
 		this.handleCancelPress = this.handleCancelPress.bind(this);
-		this.handleLeaveConfirm = this.handleLeaveConfirm.bind(this);
 	}
 
 	handleKeyPress(event) {
@@ -28,23 +28,15 @@ class NewTask extends React.Component {
 	}
 
 	updateState(event) {
-		this.setState(prevState => ({
-			task: event.target.value,
-			showConfirm: prevState.showConfirm
-		}));
+		this.setState({
+			task: event.target.value
+		});
 	}
 
 	handleCancelPress() {
-		this.setState(prevState => ({
-			task: prevState.task,
-			showConfirm: true
-		}));
-	}
-
-	handleLeaveConfirm() {
-		if (confirm('Are you want to leave?')) {
+		confirm('Are you want to leave?', { okLabbel: 'Yes', cancelLabel: 'No', title: 'Leaving page' }).then(() => {
 			this.props.router.push('/');
-		}
+		}, () => { });
 	}
 
 	render() {
@@ -54,7 +46,7 @@ class NewTask extends React.Component {
 				<input type='text' value={this.state.task} onChange={this.updateState} onKeyPress={this.handleKeyPress} />
 				<div>
 					<button onClick={this.addTask}>Save</button>
-					<button onClick={this.handleLeaveConfirm}>Cancel</button>
+					<button onClick={this.handleCancelPress}>Cancel</button>
 				</div>
 			</div>
 		</div>);
