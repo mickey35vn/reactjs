@@ -1,7 +1,7 @@
 import React from 'react';
+import Confirm from 'react-confirm-bootstrap';
 
 import TaskManager from '../managers/TashManager';
-import { confirm } from '../util/confirm';
 
 class NewTask extends React.Component {
 	constructor(props) {
@@ -12,7 +12,11 @@ class NewTask extends React.Component {
 		this.updateState = this.updateState.bind(this);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 		this.addTask = this.addTask.bind(this);
-		this.handleCancelPress = this.handleCancelPress.bind(this);
+		this.onConfirm = this.onConfirm.bind(this);
+	}
+
+	onConfirm() {
+		this.props.router.push('/');
 	}
 
 	handleKeyPress(event) {
@@ -33,20 +37,19 @@ class NewTask extends React.Component {
 		});
 	}
 
-	handleCancelPress() {
-		confirm('Are you want to leave?', { okLabbel: 'Yes', cancelLabel: 'No', title: 'Leaving page' }).then(() => {
-			this.props.router.push('/');
-		}, () => { });
-	}
-
 	render() {
+		const confirmTitle = 'Leaving page';
+		const confirmMessage = 'Are you want to leave?';
+
 		return (<div>
 			<h1>New Task</h1>
 			<div>
 				<input type='text' value={this.state.task} onChange={this.updateState} onKeyPress={this.handleKeyPress} />
 				<div>
 					<button disabled={!this.state.task} onClick={this.addTask}>Save</button>
-					<button onClick={this.handleCancelPress}>Cancel</button>
+					<Confirm onConfirm={this.onConfirm} body={confirmMessage} confirmText='Yes' title={confirmTitle}>
+						<button>Cancel</button>
+					</Confirm>
 				</div>
 			</div>
 		</div>);
