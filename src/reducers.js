@@ -6,11 +6,8 @@ const task = (state, action) => {
 	switch (action.type) {
 	case ADD_TASK:
 		return {
-			text: action.text,
-			effort: action.effort,
-			id: action.id,
-			completed: false,
-			created: action.created
+			...action,
+			completed: false
 		};
 	case TOGGLE_TASK:
 		if (state.id !== action.id) {
@@ -18,11 +15,8 @@ const task = (state, action) => {
 		}
 
 		return {
-			text: state.text,
-			effort: state.effort,
-			id: state.id,
-			completed: !state.completed,
-			created: action.created
+			...state,
+			completed: !state.completed
 		};
 	default:
 		return state;
