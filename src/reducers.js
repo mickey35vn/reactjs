@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import { ADD_TASK, TOGGLE_TASK } from './actions';
 
 const task = (state, action) => {
@@ -6,8 +7,10 @@ const task = (state, action) => {
 	case ADD_TASK:
 		return {
 			text: action.text,
+			effort: action.effort,
 			id: action.id,
-			completed: false
+			completed: false,
+			created: action.created
 		};
 	case TOGGLE_TASK:
 		if (state.id !== action.id) {
@@ -16,8 +19,10 @@ const task = (state, action) => {
 
 		return {
 			text: state.text,
+			effort: state.effort,
 			id: state.id,
-			completed: !state.completed
+			completed: !state.completed,
+			created: action.created
 		};
 	default:
 		return state;

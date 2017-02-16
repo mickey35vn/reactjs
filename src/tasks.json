@@ -1,8 +1,0 @@
-{
-	"tasks": [
-		{"name": "Hit the gym", "completed": true},
-		{"name": "Pay bills", "completed": true},
-		{"name": "Buy eggs", "completed": false},
-		{"name": "Read a book", "completed": false}
-	]
-}
