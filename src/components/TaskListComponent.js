@@ -15,7 +15,13 @@ const TaskListComponent = ({ tasks, onTaskClick }) => (
 				<TaskComponent
   key={task.id}
   {...task}
-  onClick={() => onTaskClick(task.id)}
+  onClick={() => {
+	if (task.completed) {
+		return onTaskClick(task.id);
+	}
+	return alert('Edit task is coming soon !!!');
+}
+					}
 				/>
 			)}
 		</ul>

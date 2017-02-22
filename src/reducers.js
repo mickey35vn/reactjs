@@ -30,10 +30,12 @@ const tasks = (state = [], action) => {
 			...state,
 			task(state, action)
 		];
-	case TOGGLE_TASK:
-		return state.map(t =>
-				task(t, action)
-			);
+	case TOGGLE_TASK: {
+		const clone = state.splice(0);
+		const index = clone.map(e => e.id).indexOf(action.id);
+		clone.splice(index, 1);
+		return clone;
+	}
 	default:
 		return state;
 	}

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 
 import { addTask } from '../actions';
 import MyTextField from '../components/MyTextField';
@@ -28,7 +28,8 @@ const validate = (values) => {
 
 const onSubmit = (values, dispatch) => {
 	const effort = parseInt(values.effort, 0);
-	dispatch(addTask(values.taskName, effort, values.status));
+	dispatch(addTask(values.taskName, effort, values.status || false));
+	dispatch(reset('AddTaskContainer'));
 };
 
 const AddTaskContainer = (props) => {

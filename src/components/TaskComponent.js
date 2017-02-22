@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const TaskComponent = ({ onClick, completed, text, created }) => (
 	<li style={{ color: completed ? 'blue' : 'red' }}>
 		{text} - Created at {created.toLocaleDateString()}
-		<button onClick={onClick}>{completed ? 'uncomplete' : 'complete it'}</button>
+		<button onClick={onClick}>{completed ? 'remove task' : 'edit task'}</button>
 	</li>
 );
 
