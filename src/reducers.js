@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 import { ADD_TASK, TOGGLE_TASK } from './actions';
 
@@ -40,7 +41,8 @@ const tasks = (state = [], action) => {
 };
 
 const taskManager = combineReducers({
-	tasks
+	tasks,
+	form: reduxFormReducer
 });
 
 export default taskManager;
