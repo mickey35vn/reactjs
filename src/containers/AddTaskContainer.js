@@ -28,7 +28,7 @@ const validate = (values) => {
 
 const onSubmit = (values, dispatch) => {
 	const effort = parseInt(values.effort, 0);
-	dispatch(addTask(values.taskName, effort));
+	dispatch(addTask(values.taskName, effort, values.status));
 };
 
 const AddTaskContainer = (props) => {

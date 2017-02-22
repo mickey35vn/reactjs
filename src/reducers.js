@@ -7,8 +7,7 @@ const task = (state, action) => {
 	switch (action.type) {
 	case ADD_TASK:
 		return {
-			...action,
-			completed: false
+			...action
 		};
 	case TOGGLE_TASK:
 		if (state.id !== action.id) {

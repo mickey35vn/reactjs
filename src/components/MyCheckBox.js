@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import Checkbox from 'material-ui/Checkbox';
 
-const MyCheckbox = ({ label, onChange }) => (
+const MyCheckbox = field => (
 	<Checkbox
-  label={label}
-  onCheck={onChange}
+  label={field.input.label}
+  checked={!!field.input.value}
+  onCheck={field.input.onChange}
 	/>
 );
 
